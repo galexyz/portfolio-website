@@ -219,7 +219,8 @@ const About = () => {
             <Section
               header='Drama Rating website external TVMaze API'
               description='Users can add and leave ratings for their favourite TV Shows / Dramas.
-           Search / Filter by Popularity, Genre, Year etc.'
+           Search / Filter by Popularity, Genre, Year etc. Uses the external TVMaze API to search for new dramas to add. Frontend built using NextJS.
+            Backend built using NodeJS, Sequelize ORM and postgresQL and containerized within docker. Decided against hosting due to cost.'
               skills={[
                 'NextJS',
                 'Javascript',
@@ -233,12 +234,12 @@ const About = () => {
             />
             <Section
               header='Personal Website'
-              description='2024 Portfolio website (Yes, this website)'
+              description='2024 Portfolio website (Yes, this website). Built using React, TailwindCSS and some animation libraries'
               skills={['Javascript', 'React', 'TailwindCSS']}
             />
             <Section
               header='Base Analytics (Coming soon)'
-              description='Analytics for Base shitcoins'
+              description='Analytics for Base shitcoins. Planning to experiment building on web3'
               skills={['Typescript', 'React', 'Web3JS']}
             />
           </div>
