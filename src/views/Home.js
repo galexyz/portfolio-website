@@ -4,17 +4,15 @@ import { SideNav } from '../components/SideNav'
 import Skills from '../components/Skills'
 
 const Home = () => {
-  const pageHeight = window.innerHeight - 112
+  const pageHeight = window.innerHeight - 80
 
   return (
     <div
-      style={{ height: window.innerWidth > 1024 && pageHeight }}
-      className='flex flex-row justify-center pt-20 gap-y-5 '
+      style={{ height: pageHeight }}
+      className='flex flex-row justify-center pt-10 sm:spt-20 sm:gap-y-5 gap-y-3'
     >
-      <div className='z-20'>
-        <SideNav />
-      </div>
-      <div className='pb-20'>
+      <SideNav />
+      <div className='sm:pb-20 pb-0'>
         <HeadShot />
         <Intro />
         <Skills />

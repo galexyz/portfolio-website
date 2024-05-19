@@ -33,7 +33,7 @@ export const SideNav = () => {
   return (
     <motion.nav
       initial={false}
-      className='navWrap'
+      className='navWrap z-20'
       animate={isOpen ? 'open' : 'closed'}
       custom={height}
       ref={containerRef}

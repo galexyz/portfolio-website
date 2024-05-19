@@ -2,7 +2,7 @@ import { ReactTyped } from 'react-typed'
 
 const Intro = () => {
   return (
-    <div className='text-white text-2xl lg:text-3xl font-bold absolute'>
+    <div className='text-white text-sm sm:text-2xl lg:text-3xl font-bold absolute'>
       <ReactTyped
         strings={[
           "Hi I'm Alex!",

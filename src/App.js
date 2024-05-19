@@ -3,14 +3,13 @@ import Particles, { initParticlesEngine } from '@tsparticles/react'
 // import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
 // import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
 import { loadSlim } from '@tsparticles/slim' // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
-import { SideNav } from './components/SideNav'
 import Footer from './components/Footer'
 // import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './views/Home'
 import About from './views/About'
-import Contact from './views/Contact'
 import Notfound from './views/Notfound'
+
 const App = () => {
   const [init, setInit] = useState(false)
 
@@ -36,14 +35,14 @@ const App = () => {
   return (
     init && (
       <div className='flex flex-row max-h-screen'>
-        <div className=' w-full text-white flex-1 '>
+        <div id='app' className=' w-full text-white flex-1 '>
           <Router>
             <Routes>
-              <Route exact path='/' element={<Home />} />
+              <Route path='/' element={<Home />} />
               <Route path='/home' element={<Home />} />
               <Route path='/about' element={<About />} />
-              {/* <Route path='/contact' element={<Contact />} /> */}
-              <Route element={<Notfound />} />
+              {/* <Route path="/contact" element={<Contact />} /> */}
+              <Route path='*' element={<Notfound />} />
             </Routes>
           </Router>
           <Footer />
@@ -59,6 +58,7 @@ const App = () => {
                   enable: true,
                   mode: 'push'
                 },
+
                 onHover: {
                   enable: true,
                   mode: 'repulse'
@@ -67,7 +67,7 @@ const App = () => {
               },
               modes: {
                 push: {
-                  quantity: 4
+                  quantity: 1
                 },
                 repulse: {
                   distance: 200,

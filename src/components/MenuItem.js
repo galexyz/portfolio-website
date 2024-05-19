@@ -21,12 +21,9 @@ const variants = {
 }
 
 const icons = {
-  Home: <FaHouse className='w-6 h-6' />,
-  'About Me': <FaUser className='w-6 h-6' />,
-  Contact: <FaPhone className='w-6 h-6' />
+  Home: <FaHouse className='sm:w-6 sm:h-6 h-5 w-5' />,
+  'About Me': <FaUser className='sm:w-6 sm:h-6 h-5 w-5' />
 }
-
-const colors = ['#FF008C', '#D309E1', '#9C1AFF', '#7700FF', '#4400FF']
 
 export const MenuItem = ({ i }) => {
   return (
@@ -37,8 +34,14 @@ export const MenuItem = ({ i }) => {
         whileTap={{ scale: 0.95 }}
       >
         <div className='flex flex-row py-5'>
-          <div className='icon-placeholder text-gray-600'>{icons[i.text]}</div>
-          <div className='text-placeholder text-gray-600'>{i.text}</div>
+          <div className='icon-placeholder text-white w-5 h-5 mr-10'>
+            {icons[i.text]}
+          </div>
+          {window.innerWidth > 600 && (
+            <div className='text-placeholder text-white w-20 sm:text-base text-sm'>
+              {i.text}
+            </div>
+          )}
         </div>
       </motion.li>
     </Link>

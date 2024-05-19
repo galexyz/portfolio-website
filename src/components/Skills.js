@@ -10,10 +10,10 @@ import { TbBrandNextjs } from 'react-icons/tb'
 
 const Skills = () => {
   return (
-    <div className='w-full mt-20 text-lg'>
+    <div className='w-full mt-8 sm:mt-20 text-xs sm:text-lg'>
       <div className=' text-center font-bold py-5'>My Stack</div>
-      <div className='flex flex-col gap-y-5 md:gap-y-0 md:flex-row gap-x-10'>
-        <div className='space-y-5'>
+      <div className='flex flex-col gap-y-2 sm:gap-y-5 md:gap-y-0 md:flex-row gap-x-10'>
+        <div className='space-y-2.5 sm:space-y-5'>
           <div className='flex flex-row w-60 justify-between '>
             <div className='flex flex-col'>HTML</div>
             <FaHtml5 className='w-6 h-6 text-orange-500 ' />
@@ -31,7 +31,7 @@ const Skills = () => {
             <SiTypescript className='w-6 h-6 text-blue-500' />
           </div>
         </div>
-        <div className='space-y-5'>
+        <div className='sm:space-y-5 space-y-2.5'>
           <div className='flex flex-row w-60 justify-between'>
             <div className='flex flex-col'>React / React Native</div>
             <FaReact className='w-6 h-6 text-teal-500' />

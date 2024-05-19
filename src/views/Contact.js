@@ -1,7 +1,7 @@
 import { SideNav } from '../components/SideNav'
 
 const Contact = () => {
-  const pageHeight = window.innerHeight - 112
+  const pageHeight = window.innerHeight - 80
   console.log(pageHeight)
   return (
     <div>
