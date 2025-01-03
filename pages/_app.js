@@ -39,7 +39,7 @@ export default function App({ Component, pageProps }) {
           id='tsparticles'
           particlesLoaded={particlesLoaded}
           options={{
-            fpsLimit: 120,
+            fpsLimit: 60,
             interactivity: {
               events: {
                 onClick: { enable: true, mode: 'push' },
