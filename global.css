@@ -1,3 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 
 
 
@@ -52,12 +74,12 @@ nav {
   z-index: 100;
   width: 220px; 
   height: 100%;
-  background: black
+  background-color: transparent;
 }
 
 @media (max-width: 600px) {
   .background {
-    width: 50px; /* Width for mobile screens */
+    width: 40px; /* Width for mobile screens */
   }
 }
 
@@ -81,8 +103,9 @@ button {
 @media (max-width: 600px) {
   button {
     left: 5px;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
+
   }
 }
 
@@ -122,4 +145,5 @@ ul {
   align-items: center;
   cursor: pointer;
 }
+
 

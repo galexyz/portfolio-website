@@ -5,7 +5,6 @@ const Contact = () => {
   console.log(pageHeight)
   return (
     <div>
-      <SideNav />
       <div style={{ height: pageHeight }}>
         <div className='text-center'>Contact Me</div>
       </div>

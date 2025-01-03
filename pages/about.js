@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router' // Next.js useRouter hook
 import { SideNav } from '../components/SideNav'
-import ratemydramaImage from '../assets/ratemydrama.png'
-import websiteImage from '../assets/website.png'
-import { useNavigate, useLocation } from 'react-router-dom'
+import ratemydramaImage from '../public/ratemydrama.png'
+import websiteImage from '../public/website.png'
+import Image from 'next/image'
 
 const Section = (props) => {
   return (
@@ -16,27 +17,26 @@ const Section = (props) => {
         <div>
           {props.image && (
             <div className='flex flex-row pl-5 md:pl-20 w-full h-60 my-5'>
-              <img
+              <Image
                 onClick={() => window.open(props.link)}
                 className='h-full object-cover rounded-md w-96 hover:scale-110 transition duration-300 cursor-pointer border'
                 src={props.image}
                 alt={props.header}
+                loading='lazy'
               />
             </div>
           )}
           <div className='flex flex-row flex-wrap'>
             {props.skills &&
               props.skills.length > 0 &&
-              props.skills.map((skill) => {
-                return (
-                  <div
-                    key={skill}
-                    className='py-2 px-3 border border-white rounded-3xl cursor-pointer sm:text-base text-xs xl m-1 sm:m-2 hover:shadow-xl'
-                  >
-                    {skill}
-                  </div>
-                )
-              })}
+              props.skills.map((skill) => (
+                <div
+                  key={skill}
+                  className='py-2 px-3 border border-white rounded-3xl cursor-pointer sm:text-base text-xs xl m-1 sm:m-2 hover:shadow-xl'
+                >
+                  {skill}
+                </div>
+              ))}
           </div>
         </div>
       </div>
@@ -45,35 +45,33 @@ const Section = (props) => {
 }
 
 const About = () => {
-  const pageHeight = window.innerHeight - 80
-  const containerHeight = window.innerHeight * 0.8
-  const navigate = useNavigate()
-  const location = useLocation()
+  const router = useRouter() // Next.js router
+  const [pageHeight, setPageHeight] = useState(0)
+  const [containerHeight, setContainerHeight] = useState(0)
 
-  console.log('location', location)
-
-  useEffect(() => {})
+  // Adjust height dynamically based on window size
+  useEffect(() => {
+    setPageHeight(window.innerHeight - 80)
+    setContainerHeight(window.innerHeight * 0.8)
+  }, [])
 
   const handleNavigation = (section) => {
-    navigate(`${location.pathname}#${section}`, { replace: true })
+    router.push(`#${section}`, undefined, { shallow: true })
     document
       .getElementById(section)
       ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
-  console.log(`window ${window.innerHeight} container ${containerHeight}`)
-
   return (
     <div style={{ height: pageHeight }} className=' gap-y-5'>
-      <SideNav />
       <div className='flex flex-row justify-center py-10 px-5'>
-        {window.innerWidth > 1024 && (
+        {typeof window !== 'undefined' && window.innerWidth > 1024 && (
           <div className='w-1/3 flex flex-col items-center pt-20'>
             <div className='space-y-10'>
               <div
                 onClick={() => handleNavigation('background')}
                 className={
-                  !location.hash || location.hash === '#background'
+                  router.asPath === '#background'
                     ? 'text-white underline cursor-pointer hover:scale-110 duration-300 transition'
                     : 'text-gray-500 cursor-pointer hover:scale-110 duration-300 transition'
                 }
@@ -83,7 +81,7 @@ const About = () => {
               <div
                 onClick={() => handleNavigation('experience')}
                 className={
-                  location.hash === '#experience'
+                  router.asPath === '#experience'
                     ? 'text-white underline cursor-pointer hover:scale-110 duration-300 transition'
                     : 'text-gray-500 cursor-pointer hover:scale-110 duration-300 transition'
                 }
@@ -93,7 +91,7 @@ const About = () => {
               <div
                 onClick={() => handleNavigation('projects')}
                 className={
-                  location.hash === '#projects'
+                  router.asPath === '#projects'
                     ? 'text-white underline cursor-pointer hover:scale-110 duration-300 transition'
                     : 'text-gray-500 cursor-pointer hover:scale-110 duration-300 transition'
                 }
@@ -105,7 +103,7 @@ const About = () => {
         )}
         <div
           style={{ height: containerHeight }}
-          className={`lg:w-2/3 w-full overflow-y-auto`}
+          className={`lg:w-2/3 w-full overflow-y-auto overflow-x-hidden`}
           id='container'
         >
           <div id='background'>
@@ -114,8 +112,7 @@ const About = () => {
             </div>
             <Section
               header='About me'
-              description={`
-            Over 3 years of experience building web and mobile applications across the full stack. Recently, I have been exploring building on web3 using Solidity and Web3js.`}
+              description={`Over 3 years of experience building web and mobile applications across the full stack. Recently, I have been exploring building on web3 using Solidity and Web3js.`}
             />
             <Section
               header='Bachelor of Science (University of Otago 2016-2018)'

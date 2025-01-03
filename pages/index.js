@@ -1,7 +1,7 @@
-import HeadShot from '../components/Headshot'
 import Intro from '../components/Intro'
-import { SideNav } from '../components/SideNav'
 import Skills from '../components/Skills'
+import Image from 'next/image'
+import Me from '../public/me.jpg'
 
 const Home = () => {
   const pageHeight = window.innerHeight - 80
@@ -11,9 +11,15 @@ const Home = () => {
       style={{ height: pageHeight }}
       className='flex flex-row justify-center pt-10 sm:spt-20 sm:gap-y-5 gap-y-3'
     >
-      <SideNav />
       <div className='sm:pb-20 pb-0'>
-        <HeadShot />
+        <div className='sm:w-60 w-40 h-40 sm:ml-0 ml-10 sm:h-60 mb-5 sm:mb-10 border-8 border-gray-400 rounded-full overflow-hidden shadow-lg relative'>
+          <Image
+            className='object-cover w-full h-full'
+            src={Me}
+            loading='lazy'
+            alt='Alex Huo'
+          />
+        </div>
         <Intro />
         <Skills />
       </div>
